@@ -1,4 +1,46 @@
 # Hermes-OTC (赫尔墨斯) ⚖️
+```mermaid
+graph TD
+    subgraph Web3_Dark_Forest [加密黑暗森林 外部环境]
+        A[Alice Wallet]
+        B[Bob Wallet]
+    end
+
+    subgraph Hermes_Tribunal [Hermes AI 仲裁核心 TEE隔离区]
+        C{去中心化加密谈判室 WSS}
+        D[Blue Agent: LLM 语义提取引擎]
+        E[Red Agent: 欺诈/毒性扫描器]
+        F[[结构化金融意图 JSON]]
+    end
+
+    subgraph OKX_X_Layer [OKX Onchain OS 结算层]
+        G[OKX Agent Trade Kit]
+        H[(Hermes Escrow Vault 合约)]
+        I((原子交换 Atomic Swap))
+    end
+
+    %% 数据流向图
+    A <-->|自然语言博弈| C
+    B <-->|自然语言博弈| C
+    
+    C -->|实时流监听| D
+    D -->|提取币种金额| F
+    C -->|旁路安全审计| E
+    
+    E -- 安全阈值 > 99.9% --> F
+    F -->|唤醒底层执行体| G
+    
+    G -->|多重签名授权| H
+    H -->|双向锁定资产| I
+    
+    I -->|零信任清算| A
+    I -->|零信任清算| B
+
+    classDef core fill:#000,stroke:#00ff66,stroke-width:2px,color:#00ff66;
+    classDef safe fill:#0b1021,stroke:#00aaff,stroke-width:1px,color:#fff;
+    class C,D,E,F safe;
+    class G,H,I core;
+```
 **The First LLM-Driven Autonomous OTC Escrow Agent on OKX Onchain OS**
 
 ## 1. 赛道宣言：让机器经济回归去信任化中介
